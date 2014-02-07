@@ -18,7 +18,17 @@
 #   about_triangle_project_2.py
 #
 def triangle(a, b, c):
-    # DELETE 'PASS' AND WRITE THIS CODE
+
+    sorted_sides = sorted([a, b, c])
+
+    #if a <= 0 or b <= 0 or c <= 0:
+    if sorted_sides[0] <= 0:
+        raise TriangleError, "All sides must be positive numbers"
+
+    #if a + b <= c or b + c <= a or a + c <= b:
+    if sum(sorted_sides[:2]) <= sorted_sides[-1]:
+        raise TriangleError, "One side must not be greater than the sum of the other two sides"
+
     if a == b == c:
         return 'equilateral'
     if a == b or b == c or a == c:
